@@ -1,0 +1,55 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Libro',
+    typeNamePlural: 'Libros',
+    typeImageUrl: '',
+    imageUrl: 'Url',
+    title:{
+        type: #STANDARD,
+        value: 'NombreCompleto'
+    },
+    description:{
+        type: #STANDARD,
+        value: 'IdCliente'
+    }
+}
+
+annotate entity ZC_CLIENTES_CG
+    with 
+{
+    
+    @UI:{ 
+            facet: [
+                { 
+                    id: 'DatallesClientes',
+                    label: 'Cliente',
+                    type: #COLLECTION,
+                    position: 10
+                },
+                
+                { 
+                    id: 'Clientes',
+                    parentId: 'DetallesCliente',
+                    label: 'Detalles',
+                    type: #FIELDGROUP_REFERENCE,
+                    targetQualifier: 'DetallesCliente',
+                    position: 10
+                }
+                
+            ],
+            
+            lineItem: [ { position: 10, importance: #HIGH } ],
+            fieldGroup: [ { qualifier: 'DetallesCliente', position:10 } ]
+    }
+    IdCliente;
+    @UI: {
+            lineItem: [ { position: 20, importance: #HIGH } ],
+            fieldGroup: [ { qualifier: 'DetallesCliente', position:20 } ] }
+    TipoAcceso;
+    @UI: {
+            lineItem: [ { position: 30, importance: #HIGH } ],
+            fieldGroup: [ { qualifier: 'DetallesCliente', position:30 } ] }
+    Email;
+    
+}
